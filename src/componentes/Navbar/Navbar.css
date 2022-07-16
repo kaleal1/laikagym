@@ -1,0 +1,16 @@
+
+.nav-bar{
+    background-color: moccasin;
+    height: fit-content;
+    display: flex;
+    flex-direction: row;
+}
+.nav-hover:hover{
+    align-self: flex-start;
+    font-size: 120%;
+}
+.nav-element{
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
