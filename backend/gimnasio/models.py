@@ -36,7 +36,12 @@ class Routine(models.Model):
     objects = None
     Id = models.AutoField(primary_key=True)
     Name = models.CharField(max_length=50, verbose_name='Nombre Rutina')
-    RoutineExcercise = models.ManyToManyField(Excercise)
+
+
+class RoutineExcercise(models.Model):
+    Routine = models.ForeignKey(Routine, on_delete=models.CASCADE)
+    Excercise = models.ForeignKey(Excercise, on_delete=models.CASCADE)
+    Description = models.TextField()
 
 
 class History(models.Model):

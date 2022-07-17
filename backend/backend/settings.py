@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 import os.path
+from datetime import timedelta
 from pathlib import Path
 import os
 
@@ -38,7 +39,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'gimnasio',
+    'corsheaders',
+    'rest_framework',
+    'rest_framework_simplejwt',
+    'drf_yasg',
+    'gimnasio'
 ]
 
 MIDDLEWARE = [
@@ -80,7 +85,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'laikagym',
         'USER': 'root',
-        'PASSWORD': '',
+        'PASSWORD': 'MySQL123QWE@#',
         'HOST': 'localhost',
         'PORT': '3306',
     }
@@ -131,3 +136,28 @@ MEDIA_URL = '/images/'
 
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+SWAGGER_SETTINGS = {
+   'SECURITY_DEFINITIONS': {
+        'Bearer': {
+            'type': 'apiKey',
+            'name': 'Authorization',
+            'in': 'header'
+        }
+    }
+}
+
+# aca lo normal seria poner la lista de url's de front end apps que queremos dejar que le hagan requests a este backend
+# por ej: http://localhost:3000
+#
+CORS_ALLOWED_ORIGINS = [
+    'http://localhost:3000'
+]
+
+# dejar esta setting en True permite que cualquier front end app pueda hacer requests a este backend gnorando
+# la setting de arriba, lo seguro seria dejar esta setting en False y completar la lista de url's en esa setting
+CORS_ALLOW_ALL_ORIGINS = True
+
+SIMPLE_JWT = {
+    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=50),
+}
