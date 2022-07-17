@@ -3,7 +3,7 @@ import {
   BrowserRouter as Router,
   //Switch,
   Route,
-  Link
+  Link, Switch,
 } from "react-router-dom";
 import Home from "./componentes/Home";
 import './App.css';
@@ -26,7 +26,7 @@ function App() {
           <Navbar />
           {/* A <Switch> looks through its children <Route>s and
             renders the first one that matches the current URL. */}
-          <Switch>
+          {/*<Switch>*/}
             <AuthRoute exact={true} path={`/profile`}>
               <Profile />
             </AuthRoute>
@@ -51,7 +51,7 @@ function App() {
             <route path='*'>
               <h1>404 NOT FOUND </h1>
             </route>
-          </Switch>
+          {/*</Switch>*/}
           <Footer />
         </div>
       </Router>
